@@ -1,0 +1,593 @@
+name: flutter_tuangeche
+description: A new Flutter application.
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 3.1+3
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  talkingdata_appanalytics_plugin:
+    path: ./appanalytics
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.2
+  flutter_screenutil: ^0.5.3
+  flutter_swiper: ^1.1.6
+  dio: ^3.0.4
+  marquee_flutter: ^0.1.2
+  shared_preferences: ^0.5.4+3
+  flutter_easyrefresh: ^2.0.4
+  flutter_i18n: ^0.8.0
+  fluttertoast: ^3.1.3
+  toast: ^0.1.5
+  webview_flutter: ^0.3.16
+  provider: ^3.2.0
+  city_pickers: ^0.1.29
+  flutter_html: ^0.11.0
+  amap_location: ^0.2.0
+  permission_handler: ^4.0.0
+  flutter_picker: ^1.1.0
+  image_picker: ^0.6.2+3
+  video_player: ^0.10.5
+  chewie: ^0.9.8+1
+  url_launcher: ^5.4.1
+  package_info: ^0.4.0+13
+  # install_plugin: ^2.0.0
+  # install_apk_plugin: ^1.0.1
+  path_provider: ^1.5.1
+  rxdart: ^0.23.1
+  open_file: ^3.0.1
+  fluwx: ^1.2.0
+  flutter_slidable: ^0.5.4
+  flutter_cupertino_date_picker: ^1.0.12
+  uni_links: ^0.2.0
+  cached_network_image: ^2.2.0+1
+  flutter_tencentplayer: ^0.6.0
+  screen: 0.0.5
+  flutter_forbidshot: 0.0.2
+  # tencent_kit: ^1.0.4
+  # fake_weibo: ^0.2.4
+  # cached_network_image: ^2.0.0
+  # amap_base:
+  #   git:
+  #     url: https://github.com/yohom/amap_base_flutter.git
+  #     ref: develop
+  #     path: base
+   
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - images/dayi.png
+    - images/2.0x/dayi.png
+    - images/3.0x/dayi.png
+    - images/work.png
+    - images/2.0x/work.png
+    - images/3.0x/work.png
+    - images/home.png
+    - images/2.0x/home.png
+    - images/3.0x/home.png
+    - images/selecthome.png
+    - images/2.0x/selecthome.png
+    - images/3.0x/selecthome.png
+    - images/findcar.png
+    - images/2.0x/findcar.png
+    - images/3.0x/findcar.png
+    - images/selectfindcar.png
+    - images/2.0x/selectfindcar.png
+    - images/3.0x/selectfindcar.png
+    - images/mall.png
+    - images/2.0x/mall.png
+    - images/3.0x/mall.png
+    - images/selectmall.png
+    - images/2.0x/selectmall.png
+    - images/3.0x/selectmall.png
+    - images/myinfo.png
+    - images/2.0x/myinfo.png
+    - images/3.0x/myinfo.png
+    - images/selectmyinfo.png
+    - images/2.0x/selectmyinfo.png
+    - images/3.0x/selectmyinfo.png
+    - images/assistance.png
+    - images/2.0x/assistance.png
+    - images/3.0x/assistance.png
+    - images/optimization.png
+    - images/2.0x/optimization.png
+    - images/3.0x/optimization.png
+    - images/seckill.png
+    - images/2.0x/seckill.png
+    - images/3.0x/seckill.png
+    - images/strip.png
+    - images/2.0x/strip.png
+    - images/3.0x/strip.png
+    - images/horn.png
+    - images/2.0x/horn.png
+    - images/3.0x/horn.png
+    - images/right.png
+    - images/2.0x/right.png
+    - images/3.0x/right.png
+    - images/search.png
+    - images/2.0x/search.png
+    - images/3.0x/search.png
+    - images/bgtop.png
+    - images/2.0x/bgtop.png
+    - images/3.0x/bgtop.png
+    - images/one.png
+    - images/2.0x/one.png
+    - images/3.0x/one.png
+    - images/two.png
+    - images/2.0x/two.png
+    - images/3.0x/two.png
+    - images/three.png
+    - images/2.0x/three.png
+    - images/3.0x/three.png
+    - images/refresh.png
+    - images/loginnew.png
+    - images/2.0x/loginnew.png
+    - images/3.0x/loginnew.png
+    - images/wechat.png
+    - images/2.0x/wechat.png
+    - images/3.0x/wechat.png
+    - images/phone.png
+    - images/2.0x/phone.png
+    - images/3.0x/phone.png
+    - images/mobile.png
+    - images/2.0x/mobile.png 
+    - images/3.0x/mobile.png
+    - images/integral.png
+    - images/2.0x/integral.png
+    - images/3.0x/integral.png
+    - images/exchange.png
+    - images/2.0x/exchange.png
+    - images/3.0x/exchange.png
+    - images/rollbag.png
+    - images/2.0x/rollbag.png
+    - images/3.0x/rollbag.png
+    - images/tyre.png
+    - images/2.0x/tyre.png
+    - images/3.0x/tyre.png
+    - images/engineoil.png
+    - images/2.0x/engineoil.png
+    - images/3.0x/engineoil.png
+    - images/sound.png
+    - images/2.0x/sound.png
+    - images/3.0x/sound.png
+    - images/airfiltration.png
+    - images/2.0x/airfiltration.png
+    - images/3.0x/airfiltration.png
+    - images/glass.png
+    - images/2.0x/glass.png
+    - images/3.0x/glass.png
+    - images/battery.png
+    - images/2.0x/battery.png
+    - images/3.0x/battery.png
+    - images/cosmetology.png
+    - images/2.0x/cosmetology.png
+    - images/3.0x/cosmetology.png
+    - images/interiortrim.png
+    - images/2.0x/interiortrim.png
+    - images/3.0x/interiortrim.png
+    - images/turntable.png
+    - images/2.0x/turntable.png
+    - images/3.0x/turntable.png
+    - images/explosive.png
+    - images/2.0x/explosive.png
+    - images/3.0x/explosive.png
+    - images/volume.png
+    - images/2.0x/volume.png
+    - images/3.0x/volume.png
+    - images/rightmore.png
+    - images/2.0x/rightmore.png
+    - images/3.0x/rightmore.png
+    - images/nofind.png
+    - images/2.0x/nofind.png
+    - images/3.0x/nofind.png
+    - images/clonse.png
+    - images/2.0x/clonse.png
+    - images/3.0x/clonse.png
+    - images/reduce.png
+    - images/2.0x/reduce.png
+    - images/3.0x/reduce.png
+    - images/add.png
+    - images/2.0x/add.png
+    - images/3.0x/add.png
+    - images/bottom.png
+    - images/2.0x/bottom.png
+    - images/3.0x/bottom.png
+    - images/top.png
+    - images/2.0x/top.png
+    - images/3.0x/top.png
+    - images/bottomselect.png
+    - images/2.0x/bottomselect.png
+    - images/3.0x/bottomselect.png
+    - images/topselect.png
+    - images/2.0x/topselect.png
+    - images/3.0x/topselect.png
+    - images/myinfobg.png
+    - images/2.0x/myinfobg.png
+    - images/3.0x/myinfobg.png
+    - images/order.png
+    - images/2.0x/order.png
+    - images/3.0x/order.png
+    - images/rightmy.png
+    - images/2.0x/rightmy.png
+    - images/3.0x/rightmy.png
+    - images/mycar.png
+    - images/2.0x/mycar.png
+    - images/3.0x/mycar.png
+    - images/task.png
+    - images/2.0x/task.png
+    - images/3.0x/task.png
+    - images/myadress.png
+    - images/2.0x/myadress.png
+    - images/3.0x/myadress.png
+    - images/myagreement.png
+    - images/2.0x/myagreement.png
+    - images/3.0x/myagreement.png
+    - images/mycall.png
+    - images/2.0x/mycall.png
+    - images/3.0x/mycall.png
+    - images/myinfos.png
+    - images/2.0x/myinfos.png
+    - images/3.0x/myinfos.png
+    - images/select.png
+    - images/2.0x/select.png
+    - images/3.0x/select.png
+    - images/time.png
+    - images/2.0x/time.png
+    - images/3.0x/time.png
+    - images/payuccess.png
+    - images/2.0x/payuccess.png
+    - images/3.0x/payuccess.png
+    - images/adress.png
+    - images/2.0x/adress.png
+    - images/3.0x/adress.png
+    - images/editer.png
+    - images/2.0x/editer.png
+    - images/3.0x/editer.png
+    - images/assemble.png
+    - images/2.0x/assemble.png
+    - images/3.0x/assemble.png
+    - images/call.png
+    - images/2.0x/call.png
+    - images/3.0x/call.png
+    - images/btm.png
+    - images/2.0x/btm.png
+    - images/3.0x/btm.png
+    - images/surebg.png
+    - images/2.0x/surebg.png
+    - images/3.0x/surebg.png
+    - images/sepbg.png
+    - images/2.0x/sepbg.png
+    - images/3.0x/sepbg.png
+    - images/close.png
+    - images/2.0x/close.png
+    - images/3.0x/close.png
+    - images/searchnew.png
+    - images/2.0x/searchnew.png
+    - images/3.0x/searchnew.png
+    - images/pay.png
+    - images/2.0x/pay.png
+    - images/3.0x/pay.png
+    - images/searchbg.png
+    - images/2.0x/searchbg.png
+    - images/3.0x/searchbg.png
+    - images/homeadress.png
+    - images/2.0x/homeadress.png
+    - images/3.0x/homeadress.png
+    - images/callnew.png
+    - images/2.0x/callnew.png
+    - images/3.0x/callnew.png
+    - images/hornnew.png
+    - images/2.0x/hornnew.png
+    - images/3.0x/hornnew.png
+    - images/volumes.png
+    - images/2.0x/volumes.png
+    - images/3.0x/volumes.png
+    - images/goodcar.png
+    - images/2.0x/goodcar.png
+    - images/3.0x/goodcar.png
+    - images/calculation.png
+    - images/2.0x/calculation.png
+    - images/3.0x/calculation.png
+    - images/store.png
+    - images/2.0x/store.png
+    - images/3.0x/store.png
+    - images/sale.png
+    - images/2.0x/sale.png
+    - images/3.0x/sale.png
+    - images/money.png
+    - images/2.0x/money.png
+    - images/3.0x/money.png
+    - images/go.png
+    - images/2.0x/go.png
+    - images/3.0x/go.png
+    - images/salebg.png
+    - images/2.0x/salebg.png
+    - images/3.0x/salebg.png
+    - images/newcar.png
+    - images/2.0x/newcar.png
+    - images/3.0x/newcar.png
+    - images/brand.png
+    - images/2.0x/brand.png
+    - images/3.0x/brand.png
+    - images/hot.png
+    - images/2.0x/hot.png
+    - images/3.0x/hot.png
+    - images/titlebg.png
+    - images/2.0x/titlebg.png
+    - images/3.0x/titlebg.png
+    - images/sales.png
+    - images/2.0x/sales.png
+    - images/3.0x/sales.png
+    - images/cost.png
+    - images/2.0x/cost.png
+    - images/3.0x/cost.png
+    - images/paragraph.png
+    - images/2.0x/paragraph.png
+    - images/3.0x/paragraph.png
+    - images/paragraphnew.png
+    - images/2.0x/paragraphnew.png
+    - images/3.0x/paragraphnew.png
+    - images/expl.png
+    - images/2.0x/expl.png
+    - images/3.0x/expl.png
+    - images/baokuan.png
+    - images/2.0x/baokuan.png
+    - images/3.0x/baokuan.png
+    - images/jifen.png
+    - images/2.0x/jifen.png
+    - images/3.0x/jifen.png
+    - images/temai.png
+    - images/2.0x/temai.png
+    - images/3.0x/temai.png
+    - images/inquiry.png
+    - images/2.0x/inquiry.png
+    - images/3.0x/inquiry.png
+    - images/make.png
+    - images/2.0x/make.png
+    - images/3.0x/make.png
+    - images/homepageselect.png
+    - images/2.0x/homepageselect.png
+    - images/3.0x/homepageselect.png
+    - images/mallpageselect.png
+    - images/2.0x/mallpageselect.png
+    - images/3.0x/mallpageselect.png
+    - images/infopageselect.png
+    - images/2.0x/infopageselect.png
+    - images/3.0x/infopageselect.png
+    - images/homepage.png
+    - images/2.0x/homepage.png
+    - images/3.0x/homepage.png
+    - images/mallpage.png
+    - images/2.0x/mallpage.png
+    - images/3.0x/mallpage.png
+    - images/infopage.png
+    - images/2.0x/infopage.png
+    - images/3.0x/infopage.png
+    - images/share.png
+    - images/2.0x/share.png
+    - images/3.0x/share.png
+    - images/back.png
+    - images/2.0x/back.png
+    - images/3.0x/back.png
+    - images/homeadresstop.png
+    - images/2.0x/homeadresstop.png
+    - images/3.0x/homeadresstop.png
+    - images/searchbgtop.png
+    - images/2.0x/searchbgtop.png
+    - images/3.0x/searchbgtop.png
+    - images/bofang.png
+    - images/2.0x/bofang.png
+    - images/3.0x/bofang.png
+    - images/callspell.png
+    - images/2.0x/callspell.png
+    - images/3.0x/callspell.png
+    - images/position.png
+    - images/2.0x/position.png
+    - images/3.0x/position.png
+    - images/specialbg.png
+    - images/2.0x/specialbg.png
+    - images/3.0x/specialbg.png
+    - images/mask.png
+    - images/2.0x/mask.png
+    - images/3.0x/mask.png
+    - images/information.png
+    - images/2.0x/information.png
+    - images/3.0x/information.png
+    - images/informationselect.png
+    - images/2.0x/informationselect.png
+    - images/3.0x/informationselect.png
+    - images/tips.png
+    - images/2.0x/tips.png
+    - images/3.0x/tips.png
+    - images/pointbg.png
+    - images/2.0x/pointbg.png
+    - images/3.0x/pointbg.png
+    - images/taskbg.png
+    - images/2.0x/taskbg.png
+    - images/3.0x/taskbg.png
+    - images/sign.png
+    - images/2.0x/sign.png
+    - images/3.0x/sign.png
+    - images/taskbtn.png
+    - images/2.0x/taskbtn.png
+    - images/3.0x/taskbtn.png
+    - images/check.png
+    - images/2.0x/check.png
+    - images/3.0x/check.png
+    - images/signing.png
+    - images/2.0x/signing.png
+    - images/3.0x/signing.png
+    - images/closesing.png
+    - images/2.0x/closesing.png
+    - images/3.0x/closesing.png
+    - images/coupon.png
+    - images/2.0x/coupon.png
+    - images/3.0x/coupon.png
+    - images/upper.png
+    - images/2.0x/upper.png
+    - images/3.0x/upper.png
+    - images/lower.png
+    - images/2.0x/lower.png
+    - images/3.0x/lower.png
+    - images/selecttask.png
+    - images/2.0x/selecttask.png
+    - images/3.0x/selecttask.png
+    - images/unselecttask.png
+    - images/2.0x/unselecttask.png
+    - images/3.0x/unselecttask.png
+    - images/personal.png
+    - images/2.0x/personal.png
+    - images/3.0x/personal.png
+    - images/nologin.png
+    - images/2.0x/nologin.png
+    - images/3.0x/nologin.png
+    - images/myorder.png
+    - images/2.0x/myorder.png
+    - images/3.0x/myorder.png
+    - images/mylovecar.png
+    - images/2.0x/mylovecar.png
+    - images/3.0x/mylovecar.png
+    - images/myadressnew.png
+    - images/2.0x/myadressnew.png
+    - images/3.0x/myadressnew.png
+    - images/mytask.png
+    - images/2.0x/mytask.png
+    - images/3.0x/mytask.png
+    - images/myrule.png
+    - images/2.0x/myrule.png
+    - images/3.0x/myrule.png
+    - images/yiwen.png
+    - images/2.0x/yiwen.png
+    - images/3.0x/yiwen.png
+    - images/shopping.png
+    - images/2.0x/shopping.png
+    - images/3.0x/shopping.png
+    - images/border.png
+    - images/2.0x/border.png
+    - images/3.0x/border.png
+    - images/bgroll.png
+    - images/2.0x/bgroll.png
+    - images/3.0x/bgroll.png
+    - images/bgselectroll.png
+    - images/2.0x/bgselectroll.png
+    - images/3.0x/bgselectroll.png
+    - images/unselect.png
+    - images/2.0x/unselect.png
+    - images/3.0x/unselect.png
+    - images/rightnew.png
+    - images/2.0x/rightnew.png
+    - images/3.0x/rightnew.png
+    - images/secondbg.png
+    - images/2.0x/secondbg.png
+    - images/3.0x/secondbg.png
+    - images/backnew.png
+    - images/2.0x/backnew.png
+    - images/3.0x/backnew.png
+    - images/dagou.png
+    - images/2.0x/dagou.png
+    - images/3.0x/dagou.png
+    - images/shorpingcar.png
+    - images/2.0x/shorpingcar.png
+    - images/3.0x/shorpingcar.png
+    - images/sharenew.png
+    - images/2.0x/sharenew.png
+    - images/3.0x/sharenew.png
+    - images/selectxiyi.png
+    - images/2.0x/selectxiyi.png
+    - images/3.0x/selectxiyi.png
+    - images/shares.png
+    - images/2.0x/shares.png
+    - images/3.0x/shares.png
+    - images/doubt.png
+    - images/2.0x/doubt.png
+    - images/3.0x/doubt.png
+    - images/redioSelect.png
+    - images/2.0x/redioSelect.png
+    - images/3.0x/redioSelect.png
+    - images/redio.png
+    - images/2.0x/redio.png
+    - images/3.0x/redio.png
+    - images/location.png
+    - images/2.0x/location.png
+    - images/3.0x/location.png
+    - images/2.0x/loan.png
+    - images/2.0x/eqore.png
+    - images/icon_back.png
+    - images/place_nodata.png
+    - images/player_lock.png
+    - images/player_pause.png
+    - images/player_play.png
+    - images/player_progress_img.png
+    - images/player_rotate.png
+    - images/player_unlock.png
+    - images/video_loading.png
+    - images/full_screen_on.png 
+    - images/oil.png
+    - images/2.0x/oil.png
+    - images/3.0x/oil.png
+    - images/about.png
+    - images/2.0x/about.png
+    - images/3.0x/about.png
+    - images/loginAbout.png
+    - images/2.0x/loginAbout.png
+    - images/3.0x/loginAbout.png
+    
+    
+    
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
