@@ -138,7 +138,7 @@ class _GrabbleState extends State<Grabble> {
                                 eventID: 'cardetail',
                                 eventLabel: '汽车详情',
                                 params: {
-                                  "goodsSn": list[index]['goods']['goodsSn']
+                                  "goodsSn": list[index]['goodsSn']
                                 });
                             Navigator.pushNamed(context, '/cardetail',
                                 arguments: {
@@ -254,17 +254,16 @@ class _GrabbleState extends State<Grabble> {
                                         width: Ui.width(250),
                                         height: Ui.width(188),
                                         child: CachedNetworkImage(
-                                                  width: Ui.width(250),
-                                                  height: Ui.width(188),
-                                                  fit: BoxFit.fill,
-                                                  imageUrl:
-                                                      '${list[index]['picUrl']}',
-                                        
-                                        // AspectRatio(
-                                        //   aspectRatio: 4 / 3,
-                                        //   child: Image.network(
-                                        //     '${list[index]['picUrl']}',
-                                        //   ),
+                                          width: Ui.width(250),
+                                          height: Ui.width(188),
+                                          fit: BoxFit.fill,
+                                          imageUrl: '${list[index]['picUrl']}',
+
+                                          // AspectRatio(
+                                          //   aspectRatio: 4 / 3,
+                                          //   child: Image.network(
+                                          //     '${list[index]['picUrl']}',
+                                          //   ),
                                         ),
                                       )
                                     ],

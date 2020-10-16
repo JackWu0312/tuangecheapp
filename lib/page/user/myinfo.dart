@@ -1062,43 +1062,43 @@ class _MyinfoState extends State<Myinfo> with AutomaticKeepAliveClientMixin {
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      // Navigator.pushNamed(context, '/easywebview',
-                      //     arguments: {'url': 'apprlue'});
-                      Navigator.pushNamed(context, '/about',);
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(Ui.width(40), Ui.width(45),
-                          Ui.width(40), Ui.width(30)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  '关于我们',
-                                  style: TextStyle(
-                                      color: Color(0xFF111F37),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily:
-                                          'PingFangSC-Medium,PingFang SC',
-                                      fontSize: Ui.setFontSizeSetSp(32.0)),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Image.asset('images/2.0x/about.png',
-                                width: Ui.width(50), height: Ui.height(50)),
-                          )
-                        ],
-                      ),
-                    ),
-                  )
+                  // InkWell(
+                  //   onTap: () {
+                  //     // Navigator.pushNamed(context, '/easywebview',
+                  //     //     arguments: {'url': 'apprlue'});
+                  //     Navigator.pushNamed(context, '/about',);
+                  //   },
+                  //   child: Container(
+                  //     padding: EdgeInsets.fromLTRB(Ui.width(40), Ui.width(45),
+                  //         Ui.width(40), Ui.width(30)),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       crossAxisAlignment: CrossAxisAlignment.center,
+                  //       children: <Widget>[
+                  //         Container(
+                  //           child: Row(
+                  //             crossAxisAlignment: CrossAxisAlignment.center,
+                  //             children: <Widget>[
+                  //               Text(
+                  //                 '关于我们',
+                  //                 style: TextStyle(
+                  //                     color: Color(0xFF111F37),
+                  //                     fontWeight: FontWeight.w400,
+                  //                     fontFamily:
+                  //                         'PingFangSC-Medium,PingFang SC',
+                  //                     fontSize: Ui.setFontSizeSetSp(32.0)),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ),
+                  //         Container(
+                  //           child: Image.asset('images/2.0x/about.png',
+                  //               width: Ui.width(50), height: Ui.height(50)),
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // )
                 ],
               ),
             )));
