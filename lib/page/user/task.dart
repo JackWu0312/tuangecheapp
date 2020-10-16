@@ -190,20 +190,26 @@ class _TaskState extends State<Task> {
                   )
                   : InkWell(
                       onTap: () {
-                        if (item['extra']['link'] == '/1') {
-                          Navigator.pushNamed(context, '/recommend');
-                        } else if (item['extra']['link'] == '/2') {
+                        if (item['extra']['link'] == '/registerwebview') {
                           Navigator.pushNamed(context, '/registerwebview',
                               arguments: {'url': 'apprecommend'});
-                        } else if (item['extra']['link'] == '/3') {
+                        } else if (item['extra']['link'] == '/tokenwebview') {
                           Navigator.pushNamed(context, '/tokenwebview',
                               arguments: {'url': 'applovecar'});
-                        } else if (item['extra']['link'] == '/4') {
+                        } else if (item['extra']['link'] == '/news/article') {
                           final counterback = Provider.of<Backhome>(context);
                           final countershare = Provider.of<Backshare>(context);
                           counterback.increment(3);
                           countershare.increment(2);
                           Navigator.pop(context);
+                        } else if (item['extra']['link'] == '/news/video') {
+                          final counterback = Provider.of<Backhome>(context);
+                          final countershare = Provider.of<Backshare>(context);
+                          counterback.increment(3);
+                          countershare.increment(1);
+                          Navigator.pop(context);
+                        }else{
+                          Navigator.pushNamed(context, item['extra']['link']);
                         }
                       },
                       child: Container(
