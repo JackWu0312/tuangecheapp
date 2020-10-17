@@ -58,6 +58,7 @@ dependencies:
   flutter_tencentplayer: ^0.6.0
   screen: 0.0.5
   flutter_forbidshot: 0.0.2
+  jpush_flutter: 0.5.9
   # tencent_kit: ^1.0.4
   # fake_weibo: ^0.2.4
   # cached_network_image: ^2.0.0

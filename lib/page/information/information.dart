@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_tuangeche/http/HttpHelper.dart';
 import 'package:flutter_tuangeche/ui/ui.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../mall/test.dart';
@@ -338,6 +339,7 @@ class _InformationState extends State<Information>
       await HttpUtlis.get(
           'wx/promote/vidoes?page=${this.pagevideo}&limit=${this.limitvideo}&keyword=${videokeyword}',
           success: (value) {
+            print("list = $value['data']['list']");
         if (value['errno'] == 0) {
           if (mounted) {
             if (value['data']['list'].length < limitvideo) {
@@ -440,6 +442,14 @@ class _InformationState extends State<Information>
     final countershare = Provider.of<Backshare>(context);
     final counters = Provider.of<JumpToPage>(context);
     if (countershare.count == 2) {
+      _dragAlignment =
+          Alignment(ourMap(countershare.count, 0, tabs.length - 1, -1, 1), 0);
+      _pageController.jumpToPage(countershare.count);
+      currentPageSink.add(countershare.count);
+      Future.delayed(Duration(milliseconds: 200)).then((e) {
+        countershare.increment(0);
+      });
+    } else if (countershare.count == 1) {
       _dragAlignment =
           Alignment(ourMap(countershare.count, 0, tabs.length - 1, -1, 1), 0);
       _pageController.jumpToPage(countershare.count);
@@ -861,6 +871,7 @@ class _InformationState extends State<Information>
                                                             children: <Widget>[
                                                               InkWell(
                                                                 onTap: () {
+                                                                  HttpHelper.saveFootprint(listvideo[index]['title'],listvideo[index]['id'], '5', context);
                                                                   TalkingDataAppAnalytics.onEvent(
                                                                       eventID:
                                                                           'video',
@@ -933,7 +944,7 @@ class _InformationState extends State<Information>
                                                                                     return CommonBottomSheet(
                                                                                       list: list,
                                                                                       onItemClickListener: (indexs) async {
-                                                                                        var model = fluwx.WeChatShareWebPageModel(webPage: '${Config.weblink}appvideo/${listvideo[index]['id']}', title: '${listvideo[index]['title']}', description: '${listvideo[index]['goods']['name']}', thumbnail: "assets://images/loginnew.png", scene: indexs == 0 ? fluwx.WeChatScene.SESSION : fluwx.WeChatScene.TIMELINE, transaction: "hh");
+                                                                                        var model = fluwx.WeChatShareWebPageModel(webPage: '${Config.weblink}appvideo/${listvideo[index]['id']}', title: '${listvideo[index]['title']}', description: listvideo[index]['goods']!=null?'${listvideo[index]['goods']['name']}':"", thumbnail: "assets://images/loginnew.png", scene: indexs == 0 ? fluwx.WeChatScene.SESSION : fluwx.WeChatScene.TIMELINE, transaction: "hh");
                                                                                         fluwx.shareToWeChat(model);
 
                                                                                         Navigator.pop(context);
@@ -1009,205 +1020,209 @@ class _InformationState extends State<Information>
                                                                               32.0)),
                                                                 ),
                                                               ),
-                                                              InkWell(
-                                                                onTap: () {
-                                                                  TalkingDataAppAnalytics.onEvent(
-                                                                      eventID:
-                                                                          'cardetail',
-                                                                      eventLabel: '汽车详情',
-                                                                      params: {
-                                                                        "goodSn":
-                                                                            listvideo[index]['goods']['goodSn']
-                                                                      });
-                                                                  for (var i =
-                                                                              0,
-                                                                          len =
-                                                                              listvideo.length;
-                                                                      i < len;
-                                                                      i++) {
-                                                                    arr1[i]
-                                                                        .pause();
-                                                                  }
-                                                                  Navigator.pushNamed(
-                                                                      context,
-                                                                      '/cardetail',
-                                                                      arguments: {
-                                                                        "id": listvideo[index]['goods']
-                                                                            [
-                                                                            'id'],
-                                                                      });
-                                                                },
-                                                                child:
-                                                                    Container(
-                                                                  width:
+                                                              Offstage(
+                                                                offstage: listvideo[index]['goods'] == null,
+                                                                child: InkWell(
+                                                                  onTap: () {
+                                                                    TalkingDataAppAnalytics.onEvent(
+                                                                        eventID:
+                                                                        'cardetail',
+                                                                        eventLabel: '汽车详情',
+                                                                        params: {
+                                                                          "goodSn":
+                                                                          listvideo[index]['goods']!=null?listvideo[index]['goods']['goodSn']:""
+                                                                        });
+                                                                    for (var i =
+                                                                    0,
+                                                                        len =
+                                                                            listvideo.length;
+                                                                    i < len;
+                                                                    i++) {
+                                                                      arr1[i]
+                                                                          .pause();
+                                                                    }
+                                                                    Navigator.pushNamed(
+                                                                        context,
+                                                                        '/cardetail',
+                                                                        arguments: {
+                                                                          "id": listvideo[index]['goods']!=null?listvideo[index]['goods']
+                                                                          [
+                                                                          'id']:"",
+                                                                        });
+                                                                  },
+                                                                  child:
+                                                                  Container(
+                                                                    width:
+                                                                    Ui.width(
+                                                                        690),
+                                                                    constraints:
+                                                                    BoxConstraints(
+                                                                      minHeight:
                                                                       Ui.width(
-                                                                          690),
-                                                                  constraints:
-                                                                      BoxConstraints(
-                                                                    minHeight:
-                                                                        Ui.width(
-                                                                            270),
-                                                                  ),
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: Colors
-                                                                        .white,
-                                                                    shape: BoxShape
-                                                                        .rectangle,
-                                                                    boxShadow: [
-                                                                      BoxShadow(
-                                                                        color: Color(
-                                                                            0XFFDFE3EC),
-                                                                        offset: Offset(
-                                                                            1,
-                                                                            1),
-                                                                        blurRadius:
-                                                                            Ui.width(10.0),
-                                                                      ),
-                                                                    ],
-                                                                    borderRadius: new BorderRadius
-                                                                        .all(new Radius
-                                                                            .circular(
-                                                                        Ui.width(
-                                                                            15.0))),
-                                                                  ),
-                                                                  child: Stack(
-                                                                    children: <
-                                                                        Widget>[
-                                                                      Positioned(
-                                                                          right:
-                                                                              0,
-                                                                          top:
-                                                                              0,
-                                                                          child:
-                                                                              Container(
-                                                                            width:
-                                                                                Ui.width(128),
-                                                                            height:
-                                                                                Ui.width(44),
-                                                                            padding: EdgeInsets.fromLTRB(
-                                                                                Ui.width(16),
-                                                                                0,
-                                                                                0,
-                                                                                0),
-                                                                            alignment:
-                                                                                Alignment.center,
-                                                                            decoration: BoxDecoration(
-                                                                                image: DecorationImage(
-                                                                              image: AssetImage('images/2.0x/paragraphnew.png'),
-                                                                              // fit: BoxFit.cover,
+                                                                          270),
+                                                                    ),
+                                                                    decoration:
+                                                                    BoxDecoration(
+                                                                      color: Colors
+                                                                          .white,
+                                                                      shape: BoxShape
+                                                                          .rectangle,
+                                                                      boxShadow: [
+                                                                        BoxShadow(
+                                                                          color: Color(
+                                                                              0XFFDFE3EC),
+                                                                          offset: Offset(
+                                                                              1,
+                                                                              1),
+                                                                          blurRadius:
+                                                                          Ui.width(10.0),
+                                                                        ),
+                                                                      ],
+                                                                      borderRadius: new BorderRadius
+                                                                          .all(new Radius
+                                                                          .circular(
+                                                                          Ui.width(
+                                                                              15.0))),
+                                                                    ),
+                                                                    child: Stack(
+                                                                      children: <
+                                                                          Widget>[
+                                                                        Positioned(
+                                                                            right:
+                                                                            0,
+                                                                            top:
+                                                                            0,
+                                                                            child:
+                                                                            Container(
+                                                                              width:
+                                                                              Ui.width(128),
+                                                                              height:
+                                                                              Ui.width(44),
+                                                                              padding: EdgeInsets.fromLTRB(
+                                                                                  Ui.width(16),
+                                                                                  0,
+                                                                                  0,
+                                                                                  0),
+                                                                              alignment:
+                                                                              Alignment.center,
+                                                                              decoration: BoxDecoration(
+                                                                                  image: DecorationImage(
+                                                                                    image: AssetImage('images/2.0x/paragraphnew.png'),
+                                                                                    // fit: BoxFit.cover,
+                                                                                  )),
+                                                                              child:
+                                                                              Text(
+                                                                                '视频同款',
+                                                                                style: TextStyle(color: Color(0xFF111F37), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(24.0)),
+                                                                              ),
                                                                             )),
-                                                                            child:
-                                                                                Text(
-                                                                              '视频同款',
-                                                                              style: TextStyle(color: Color(0xFF111F37), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(24.0)),
+                                                                        Column(
+                                                                          mainAxisAlignment:
+                                                                          MainAxisAlignment.start,
+                                                                          crossAxisAlignment:
+                                                                          CrossAxisAlignment.start,
+                                                                          children: <
+                                                                              Widget>[
+                                                                            Container(
+                                                                              margin: EdgeInsets.fromLTRB(
+                                                                                  Ui.width(30),
+                                                                                  Ui.width(50),
+                                                                                  Ui.width(30),
+                                                                                  0),
+                                                                              child:
+                                                                              Text(
+                                                                                listvideo[index]['goods']!=null?'${listvideo[index]['goods']['name']}':"",
+                                                                                style: TextStyle(color: Color(0xFF111F37), fontWeight: FontWeight.w500, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(32.0)),
+                                                                              ),
                                                                             ),
-                                                                          )),
-                                                                      Column(
-                                                                        mainAxisAlignment:
-                                                                            MainAxisAlignment.start,
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.start,
-                                                                        children: <
-                                                                            Widget>[
-                                                                          Container(
-                                                                            margin: EdgeInsets.fromLTRB(
-                                                                                Ui.width(30),
-                                                                                Ui.width(50),
-                                                                                Ui.width(30),
-                                                                                0),
-                                                                            child:
-                                                                                Text(
-                                                                              '${listvideo[index]['goods']['name']}',
-                                                                              style: TextStyle(color: Color(0xFF111F37), fontWeight: FontWeight.w500, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(32.0)),
-                                                                            ),
-                                                                          ),
-                                                                          Container(
-                                                                            height:
-                                                                                Ui.width(188),
-                                                                            margin: EdgeInsets.fromLTRB(
-                                                                                0,
-                                                                                0,
-                                                                                Ui.width(30),
-                                                                                0),
-                                                                            // width: Ui.width(690),
-                                                                            child:
-                                                                                Row(
-                                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                                                              children: <Widget>[
-                                                                                Expanded(
-                                                                                  flex: 1,
-                                                                                  child: Container(
-                                                                                    child: Column(
-                                                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                      mainAxisAlignment: MainAxisAlignment.start,
-                                                                                      children: <Widget>[
-                                                                                        Container(
-                                                                                          margin: EdgeInsets.fromLTRB(Ui.width(32), Ui.width(28), 0, 0),
-                                                                                          child: RichText(
-                                                                                            textAlign: TextAlign.end,
-                                                                                            text: TextSpan(
-                                                                                              text: '惊爆价:',
-                                                                                              style: TextStyle(color: Color(0xFFED3221), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(26.0)),
-                                                                                              children: <TextSpan>[
-                                                                                                TextSpan(
-                                                                                                  text: '${listvideo[index]['goods']['retailPrice']}${listvideo[index]['goods']['unit']}',
-                                                                                                  style: TextStyle(fontSize: Ui.setFontSizeSetSp(32.0)),
-                                                                                                ),
-                                                                                              ],
+                                                                            Container(
+                                                                              height:
+                                                                              Ui.width(188),
+                                                                              margin: EdgeInsets.fromLTRB(
+                                                                                  0,
+                                                                                  0,
+                                                                                  Ui.width(30),
+                                                                                  0),
+                                                                              // width: Ui.width(690),
+                                                                              child:
+                                                                              Row(
+                                                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                children: <Widget>[
+                                                                                  Expanded(
+                                                                                    flex: 1,
+                                                                                    child: Container(
+                                                                                      child: Column(
+                                                                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                        mainAxisAlignment: MainAxisAlignment.start,
+                                                                                        children: <Widget>[
+                                                                                          Container(
+                                                                                            margin: EdgeInsets.fromLTRB(Ui.width(32), Ui.width(28), 0, 0),
+                                                                                            child: RichText(
+                                                                                              textAlign: TextAlign.end,
+                                                                                              text: TextSpan(
+                                                                                                text: '惊爆价:',
+                                                                                                style: TextStyle(color: Color(0xFFED3221), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(26.0)),
+                                                                                                children: <TextSpan>[
+                                                                                                  TextSpan(
+                                                                                                    text: listvideo[index]['goods']!=null?'${listvideo[index]['goods']['retailPrice']}${listvideo[index]['goods']['unit']}':"",
+                                                                                                    style: TextStyle(fontSize: Ui.setFontSizeSetSp(32.0)),
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
                                                                                             ),
                                                                                           ),
-                                                                                        ),
-                                                                                        Container(
-                                                                                          margin: EdgeInsets.fromLTRB(Ui.width(32), Ui.width(10), 0, 0),
-                                                                                          child: RichText(
-                                                                                            textAlign: TextAlign.end,
-                                                                                            text: TextSpan(
-                                                                                              text: '官方指导价:',
-                                                                                              style: TextStyle(color: Color(0xFF9398A5), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(24.0)),
-                                                                                              children: <TextSpan>[
-                                                                                                TextSpan(
-                                                                                                  text: '${listvideo[index]['goods']['counterPrice']}${listvideo[index]['goods']['unit']}',
-                                                                                                ),
-                                                                                              ],
+                                                                                          Container(
+                                                                                            margin: EdgeInsets.fromLTRB(Ui.width(32), Ui.width(10), 0, 0),
+                                                                                            child: RichText(
+                                                                                              textAlign: TextAlign.end,
+                                                                                              text: TextSpan(
+                                                                                                text: '官方指导价:',
+                                                                                                style: TextStyle(color: Color(0xFF9398A5), fontWeight: FontWeight.w400, fontFamily: 'PingFangSC-Medium,PingFang SC', fontSize: Ui.setFontSizeSetSp(24.0)),
+                                                                                                children: <TextSpan>[
+                                                                                                  TextSpan(
+                                                                                                    text: listvideo[index]['goods']!=null?'${listvideo[index]['goods']['counterPrice']}${listvideo[index]['goods']['unit']}':"",
+                                                                                                  ),
+                                                                                                ],
+                                                                                              ),
                                                                                             ),
-                                                                                          ),
-                                                                                        )
-                                                                                      ],
+                                                                                          )
+                                                                                        ],
+                                                                                      ),
                                                                                     ),
                                                                                   ),
-                                                                                ),
-                                                                                Container(
-                                                                                    width: Ui.width(250),
-                                                                                    height: Ui.width(188),
-                                                                                    child: Stack(
-                                                                                      children: <Widget>[
-                                                                                        Container(
-                                                                                          width: Ui.width(250),
-                                                                                          height: Ui.width(188),
-                                                                                          child: AspectRatio(
-                                                                                            aspectRatio: 4 / 3,
-                                                                                            child: CachedNetworkImage(
-                                                                                              fit: BoxFit.fill,
-                                                                                              imageUrl: '${listvideo[index]['goods']['picUrl']}',
+                                                                                  Container(
+                                                                                      width: Ui.width(250),
+                                                                                      height: Ui.width(188),
+                                                                                      child: Stack(
+                                                                                        children: <Widget>[
+                                                                                          Container(
+                                                                                            width: Ui.width(250),
+                                                                                            height: Ui.width(188),
+                                                                                            child: AspectRatio(
+                                                                                              aspectRatio: 4 / 3,
+                                                                                              child: CachedNetworkImage(
+                                                                                                fit: BoxFit.fill,
+                                                                                                imageUrl: listvideo[index]['goods']!=null?'${listvideo[index]['goods']['picUrl']}':"",
+                                                                                              ),
+                                                                                              // Image.network(
+                                                                                              //   '${listvideo[index]['goods']['picUrl']}',
+                                                                                              // ),
                                                                                             ),
-                                                                                            // Image.network(
-                                                                                            //   '${listvideo[index]['goods']['picUrl']}',
-                                                                                            // ),
                                                                                           ),
-                                                                                        ),
-                                                                                      ],
-                                                                                    ))
-                                                                              ],
-                                                                            ),
-                                                                          )
-                                                                        ],
-                                                                      ),
-                                                                    ],
+                                                                                        ],
+                                                                                      ))
+                                                                                ],
+                                                                              ),
+                                                                            )
+                                                                          ],
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              )
+                                                              ),
+
                                                             ],
                                                           ),
                                                         );
@@ -1238,6 +1253,8 @@ class _InformationState extends State<Information>
                                                           (context, index) {
                                                         return InkWell(
                                                           onTap: () {
+                                                            //浏览资讯足迹
+                                                            HttpHelper.saveFootprint(listdried[index]['title'],listdried[index]['id'], '4', context);
                                                             TalkingDataAppAnalytics
                                                                 .onEvent(
                                                                     eventID:
